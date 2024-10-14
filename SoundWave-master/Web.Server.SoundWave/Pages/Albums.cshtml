@@ -1,0 +1,47 @@
+﻿@page
+@model Web.Server.SoundWave.Pages.AlbumsModel
+
+<div class="container mt-5">
+    <h1>Альбомы</h1>
+    <div class="row row-cols-4">
+        @if (Model.Albums is not null)
+        {
+            @foreach (var albums in Model.Albums)
+            {
+                <div class="card" style="width: 18rem;">
+                    <a asp-page="AlbumDetails" asp-route-id="@albums.Id" style="text-decoration: inherit; color: inherit">
+                        <img src="@albums.UrlPreviewImg" class="card-img-top" alt="@albums.Title">
+                        <div class="card-body">
+                            <h5 class="card-title">@albums.Title</h5>
+
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+
+    </div>
+    <form method="get">
+    <div>
+        <label for="minPrice">Min Price</label>
+        <input type="number" id="minPrice" name="MinPrice" step="0.01" value="@Model.MinPrice" />
+
+        <label for="maxPrice">Max Price</label>
+        <input type="number" id="maxPrice" name="MaxPrice" step="0.01" value="@Model.MaxPrice" />
+
+        <button type="submit">Filter</button>
+    </div>
+</form>
+
+<div>
+        @foreach (var album in Model.Albums)
+
+        {
+            <div class="card">
+                <h5>@album.Title</h5>
+                <p>Price: @album.Price</p>
+            </div>
+        }
+</div>
+
+</div>

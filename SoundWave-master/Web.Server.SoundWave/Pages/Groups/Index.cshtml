@@ -1,0 +1,22 @@
+﻿@page
+@model Web.Server.SoundWave.Pages.Groups.IndexModel
+
+<div class="container mt-5">
+    <h1>Главная</h1>
+    <div class="row row-cols-4">
+        @if (Model is not null)
+        {
+            @foreach (var group in Model.Groups)
+            {
+                <div class="card" style="width: 18rem;">
+                    <a asp-page="Details" asp-route-id="@group.Id" style="text-decoration: inherit; color: inherit">
+                        <img src="@group.UrlPreviewImg" class="card-img-top" alt="@group.Title">
+                        <div class="card-body">
+                            <h5 class="card-title">@group.Title</h5>
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+    </div>
+</div>

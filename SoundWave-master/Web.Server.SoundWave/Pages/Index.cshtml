@@ -1,0 +1,23 @@
+﻿@page
+@model Web.Server.SoundWave.Pages.IndexModel
+<h5>Списки фильмов</h5>
+<div class="container mt-5">
+    <h1>Главная</h1>
+    <div class="row row-cols-4">
+        @if (Model.Albums is not null)
+        {
+            @foreach (var albums in Model.Albums)
+            {
+                <div class="card" style="width: 18rem;">
+                    <a asp-page="AlbumDetails" asp-route-id="@albums.Id" style="text-decoration: inherit; color: inherit">
+                        <img src="@albums.UrlPreviewImg" class="card-img-top" alt="@albums.Title">
+                        <div class="card-body">
+                            <h5 class="card-title">@albums.Title</h5>
+
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+    </div>
+</div>
